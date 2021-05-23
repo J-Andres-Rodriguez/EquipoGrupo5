@@ -108,20 +108,6 @@ public class EquipoController {
 
 	}
 
-	@DeleteMapping("/{idEquipo}")
-	public ResponseEntity<?> eliminar(@PathVariable int idEquipo) {
 
-		try {
-			equipoService.delete(idEquipo);
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("mensaje", "Equipo eliminado!");
-			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
-		} catch (DataAccessException | InternalError e) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("mensaje", "Equipo no pudo ser eliminado!");
-			map.put("error", e.getCause().getMessage());
-			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
-		}
-	}
 
 }
